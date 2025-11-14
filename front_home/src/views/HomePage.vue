@@ -20,21 +20,15 @@
               </span>
             </router-link>
             <nav class="hidden md:flex items-center space-x-6">
-              <a href="#" class="text-gray-900 hover:text-red-500 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
+              <router-link to="/" class="text-gray-900 hover:text-red-500 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
                 首页
-              </a>
-              <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
-                稿件
-              </a>
-              <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
-                任务
-              </a>
-              <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
-                数据
-              </a>
-              <a href="#" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
-                入驻
-              </a>
+              </router-link>
+              <router-link to="/content-management" v-if="influencerStore.isInfluencer" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
+                我的稿件
+              </router-link>
+              <router-link to="/influencer-application" v-if="!influencerStore.isInfluencer && userStore.isLoggedIn" class="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-red-500 after:transition-all after:duration-300">
+                达人入驻
+              </router-link>
             </nav>
           </div>
           <div class="flex items-center gap-4">
@@ -81,7 +75,7 @@
                   <p class="text-xs text-gray-500">{{ userStore.userInfo?.username }}</p>
                 </div>
                 <button
-                  @click="showProfileDialog = true; showUserMenu = false"
+                  @click="$router.push('/personal-center'); showUserMenu = false"
                   class="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                 >
                   <User class="h-4 w-4" />
@@ -373,6 +367,7 @@ import ProfileDialog from '@/components/ProfileDialog.vue'
 import InfluencerProfileDialog from '@/components/InfluencerProfileDialog.vue'
 import { getCategoryList, getFeaturedContentList, getLatestContentList, getInfluencerList, getPlatformList } from '@/api/home'
 import { useUserStore } from '@/stores/user'
+import { useInfluencerStore } from '@/stores/influencer'
 
 // 图标映射
 const iconMap: Record<string, any> = {
@@ -409,6 +404,7 @@ const parseGradientColors = (colorClass: string): { fromColor: string, toColor: 
 
 // 用户Store
 const userStore = useUserStore()
+const influencerStore = useInfluencerStore()
 
 // UI状态
 const showUserMenu = ref(false)
@@ -619,9 +615,14 @@ const handleClickOutside = (event: MouseEvent) => {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   // 初始化用户信息
   userStore.initUserInfo()
+  
+  // 检查达人角色
+  if (userStore.isLoggedIn) {
+    await influencerStore.checkInfluencerRole()
+  }
   
   // 加载页面数据
   loadData()

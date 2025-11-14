@@ -1,5 +1,6 @@
 package com.agileboot.admin;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -16,6 +17,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @ComponentScan(basePackages = "com.agileboot.*")
+@MapperScan(basePackages = {"com.agileboot.domain.**.db", "com.agileboot.infrastructure.**"}, 
+            markerInterface = com.baomidou.mybatisplus.core.mapper.BaseMapper.class)
 public class AgileBootAdminApplication {
 
     public static void main(String[] args) {

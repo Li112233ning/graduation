@@ -1,6 +1,13 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse } from 'axios'
 
+// API响应类型
+export interface ApiResponse<T = any> {
+  code: number
+  msg: string
+  data: T
+}
+
 // 创建axios实例
 const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
