@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Maven build output
+target/
+**/target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Log files
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+
+# Compiled files
+*.class
+*.jar
+*.war
+
+# Package files
+*.zip
+*.tar.gz
+*.rar
+
+# OS files
+Thumbs.db
