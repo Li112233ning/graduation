@@ -26,7 +26,7 @@ export const useUserStore = defineStore('user', () => {
     return new URL('../img/361084_2.gif', import.meta.url).href
   })
   const displayName = computed(() => {
-    if (!userInfo.value) return '游客'
+    if (!userInfo.value) return '用户'
     return userInfo.value.nickname || userInfo.value.username || '用户'
   })
   

@@ -33,6 +33,16 @@ public class MenuPermissionService {
         return has(loginUser.getRoleInfo().getMenuPermissions(), permission);
     }
 
+    /**
+     * 验证用户是否具备某权限（别名方法）
+     *
+     * @param permission 权限字符串
+     * @return 用户是否具备某权限
+     */
+    public boolean hasPermission(String permission) {
+        return has(permission);
+    }
+
 
     /**
      * 判断是否包含权限

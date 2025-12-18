@@ -153,4 +153,21 @@ public class ContentSubmissionManageService {
     public void batchDeleteSubmission(List<Long> ids) {
         submissionService.removeByIds(ids);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void publishSubmission(Long id) {
+        ContentSubmissionEntity submission = submissionService.getById(id);
+        if (submission == null) {
+            throw new ApiException(ErrorCode.Business.COMMON_OBJECT_NOT_FOUND, "稿件不存在");
+        }
+        
+        if (submission.getStatus() != 2) {
+            throw new ApiException(ErrorCode.Business.COMMON_UNSUPPORTED_OPERATION, "只有已通过审核的稿件才能发布");
+        }
+        
+        submission.setStatus(4);
+        submission.setPublishedAt(LocalDateTime.now());
+        
+        submissionService.updateById(submission);
+    }
 }

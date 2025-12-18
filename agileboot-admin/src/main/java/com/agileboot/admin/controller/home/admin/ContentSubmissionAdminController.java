@@ -24,7 +24,7 @@ public class ContentSubmissionAdminController extends BaseController {
 
     @Operation(summary = "查询投稿列表")
     @GetMapping("/list")
-    @PreAuthorize("@permission.hasPermission('home:submission:list')")
+    @PreAuthorize("@permission.hasPermission('home:content:submission')")
     public ResponseDTO<PageDTO<ContentSubmissionDTO>> getSubmissionList(ContentSubmissionQuery query) {
         PageDTO<ContentSubmissionDTO> pageDTO = submissionManageService.getSubmissionList(query);
         return ResponseDTO.ok(pageDTO);
@@ -32,7 +32,7 @@ public class ContentSubmissionAdminController extends BaseController {
 
     @Operation(summary = "查询投稿详情")
     @GetMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('home:submission:query')")
+    @PreAuthorize("@permission.hasPermission('home:content:submission:query')")
     public ResponseDTO<ContentSubmissionDTO> getSubmissionDetail(@PathVariable Long id) {
         ContentSubmissionDTO dto = submissionManageService.getSubmissionDetail(id);
         return ResponseDTO.ok(dto);
@@ -40,7 +40,7 @@ public class ContentSubmissionAdminController extends BaseController {
 
     @Operation(summary = "审核投稿")
     @PutMapping("/{id}/audit")
-    @PreAuthorize("@permission.hasPermission('home:submission:audit')")
+    @PreAuthorize("@permission.hasPermission('home:content:submission:audit')")
     public ResponseDTO<Void> auditSubmission(
             @PathVariable Long id,
             @RequestParam Integer status,
@@ -49,9 +49,17 @@ public class ContentSubmissionAdminController extends BaseController {
         return ResponseDTO.ok();
     }
 
+    @Operation(summary = "发布投稿")
+    @PutMapping("/{id}/publish")
+    @PreAuthorize("@permission.hasPermission('home:content:submission:publish')")
+    public ResponseDTO<Void> publishSubmission(@PathVariable Long id) {
+        submissionManageService.publishSubmission(id);
+        return ResponseDTO.ok();
+    }
+
     @Operation(summary = "删除投稿")
     @DeleteMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('home:submission:remove')")
+    @PreAuthorize("@permission.hasPermission('home:content:submission:remove')")
     public ResponseDTO<Void> deleteSubmission(@PathVariable Long id) {
         submissionManageService.deleteSubmission(id);
         return ResponseDTO.ok();
@@ -59,7 +67,7 @@ public class ContentSubmissionAdminController extends BaseController {
 
     @Operation(summary = "批量删除投稿")
     @DeleteMapping("/batch")
-    @PreAuthorize("@permission.hasPermission('home:submission:remove')")
+    @PreAuthorize("@permission.hasPermission('home:content:submission:remove')")
     public ResponseDTO<Void> batchDeleteSubmission(@RequestBody List<Long> ids) {
         submissionManageService.batchDeleteSubmission(ids);
         return ResponseDTO.ok();

@@ -22,7 +22,7 @@ public class InfluencerApplicationAdminController extends BaseController {
 
     @Operation(summary = "查询申请列表")
     @GetMapping("/list")
-    @PreAuthorize("@permission.hasPermission('home:application:list')")
+    @PreAuthorize("@permission.hasPermission('home:influencer:application')")
     public ResponseDTO<PageDTO<InfluencerApplicationDTO>> getApplicationList(InfluencerApplicationQuery query) {
         PageDTO<InfluencerApplicationDTO> pageDTO = applicationManageService.getApplicationList(query);
         return ResponseDTO.ok(pageDTO);
@@ -30,7 +30,7 @@ public class InfluencerApplicationAdminController extends BaseController {
 
     @Operation(summary = "查询申请详情")
     @GetMapping("/{id}")
-    @PreAuthorize("@permission.hasPermission('home:application:query')")
+    @PreAuthorize("@permission.hasPermission('home:influencer:application:query')")
     public ResponseDTO<InfluencerApplicationDTO> getApplicationDetail(@PathVariable Long id) {
         // 可以复用查询逻辑或单独实现
         return ResponseDTO.ok();
@@ -38,7 +38,7 @@ public class InfluencerApplicationAdminController extends BaseController {
 
     @Operation(summary = "审核申请")
     @PutMapping("/{id}/audit")
-    @PreAuthorize("@permission.hasPermission('home:application:audit')")
+    @PreAuthorize("@permission.hasPermission('home:influencer:application:audit')")
     public ResponseDTO<Void> auditApplication(
             @PathVariable Long id,
             @RequestParam Integer status,

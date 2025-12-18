@@ -1,5 +1,6 @@
 <template>
   <input
+    ref="inputRef"
     :class="cn(
       'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
       props.class
@@ -11,6 +12,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -19,9 +21,18 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const inputRef = ref<HTMLInputElement>()
 
 defineEmits<{
   'update:modelValue': [value: string | number]
 }>()
+
+// 暴露 input 元素，方便父组件调用 focus 等方法
+defineExpose({
+  focus: () => inputRef.value?.focus(),
+  blur: () => inputRef.value?.blur(),
+  select: () => inputRef.value?.select(),
+  $el: inputRef
+})
 </script>
 

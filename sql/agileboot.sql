@@ -11,7 +11,7 @@
  Target Server Version : 80017 (8.0.17)
  File Encoding         : 65001
 
- Date: 14/11/2025 16:25:19
+ Date: 15/11/2025 09:14:40
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `content_submission`  (
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
   INDEX `idx_status`(`status` ASC) USING BTREE,
   INDEX `idx_platform_type`(`platform_type` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of content_submission
@@ -63,7 +63,7 @@ CREATE TABLE `home_banner`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`banner_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '首页轮播图表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '首页轮播图表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_banner
@@ -92,7 +92,7 @@ CREATE TABLE `home_category`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容分类表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容分类表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_category
@@ -133,7 +133,7 @@ CREATE TABLE `home_comment`  (
   INDEX `idx_content_id`(`content_id` ASC) USING BTREE,
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
   INDEX `idx_parent_id`(`parent_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容评论表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容评论表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_comment
@@ -164,7 +164,7 @@ CREATE TABLE `home_comment_like`  (
   UNIQUE INDEX `uk_comment_user`(`comment_id` ASC, `user_id` ASC) USING BTREE,
   INDEX `idx_comment_id`(`comment_id` ASC) USING BTREE,
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '评论点赞表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '评论点赞表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_comment_like
@@ -198,7 +198,7 @@ CREATE TABLE `home_content`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`content_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容稿件表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容稿件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_content
@@ -211,11 +211,11 @@ INSERT INTO `home_content` VALUES (5, '新疆自驾游 | 独库公路全攻略',
 INSERT INTO `home_content` VALUES (6, '护肤心得 | 敏感肌修复历程分享', 4, 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=300&fit=crop\"]', 123000, 35000, 182001, 0, 2, '小红书', 2, NULL, 1, 0, NULL, 1, '2025-11-09 15:52:29', 4, '2025-11-12 13:48:39', 0);
 INSERT INTO `home_content` VALUES (7, '数码开箱 | 最新款游戏笔记本评测', 5, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=300&fit=crop\"]', 187000, 52000, 221000, 0, 2, '抖音', 3, NULL, 1, 0, NULL, 1, '2025-11-09 15:52:29', NULL, NULL, 0);
 INSERT INTO `home_content` VALUES (8, '家常菜谱 | 10分钟快手早餐合集', 1, 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&h=300&fit=crop\"]', 228000, 69000, 356001, 0, 2, '快手', 2, NULL, 1, 1, NULL, 1, '2025-11-09 15:52:29', NULL, '2025-11-13 17:30:49', 0);
-INSERT INTO `home_content` VALUES (9, '我的极简生活 | 断舍离一年的感悟', 7, 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop\"]', 67000, 18000, 98011, 12000, 1, '小红书', 4, '分享我一年来践行极简主义的心得体会，从物质到精神的全面转变。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, '2025-11-13 17:25:07', 0);
-INSERT INTO `home_content` VALUES (10, '职场新人必看 | 5个快速成长秘诀', 7, 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=300&fit=crop\"]', 89000, 25000, 156022, 18000, 1, '知乎', 4, '总结我在职场前三年学到的宝贵经验，帮助职场新人少走弯路。', 1, 1, '', 1, '2025-11-13 11:41:46', 4, '2025-11-13 17:32:09', 0);
+INSERT INTO `home_content` VALUES (9, '我的极简生活 | 断舍离一年的感悟', 7, 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop\"]', 67000, 18000, 98012, 12000, 1, '小红书', 4, '分享我一年来践行极简主义的心得体会，从物质到精神的全面转变。', 1, 1, '', 1, '2025-11-13 11:41:46', 4, '2025-11-15 08:47:25', 0);
+INSERT INTO `home_content` VALUES (10, '职场新人必看 | 5个快速成长秘诀', 7, 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=300&fit=crop\"]', 89000, 25000, 156023, 18000, 1, '知乎', 4, '总结我在职场前三年学到的宝贵经验，帮助职场新人少走弯路。', 1, 1, '', 1, '2025-11-13 11:41:46', 4, '2025-11-15 08:48:46', 0);
 INSERT INTO `home_content` VALUES (11, '高效学习方法 | 如何一年读100本书', 8, 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=300&fit=crop\"]', 123000, 42000, 234006, 28000, 1, 'B站', 3, '分享我的阅读方法和技巧，帮助大家在忙碌的生活中也能高效阅读。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, '2025-11-13 17:28:43', 0);
 INSERT INTO `home_content` VALUES (12, '亲子沟通技巧 | 如何与青春期孩子相处', 8, 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=300&fit=crop\"]', 156000, 38000, 189000, 22000, 1, '小红书', 5, '分享我与青春期孩子相处的经验，帮助家长建立良好的亲子关系。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, NULL, 0);
-INSERT INTO `home_content` VALUES (13, '30天健身挑战 | 从宅男到肌肉男的蜕变', 9, 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=300&fit=crop\"]', 234000, 67000, 345001, 45000, 1, '抖音', 6, '记录我30天健身的完整过程，分享训练计划和饮食安排。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, '2025-11-13 13:13:15', 0);
+INSERT INTO `home_content` VALUES (13, '30天健身挑战 | 从宅男到肌肉男的蜕变', 9, 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=300&fit=crop\"]', 234000, 67000, 345002, 45000, 1, '抖音', 6, '记录我30天健身的完整过程，分享训练计划和饮食安排。', 1, 1, '', 1, '2025-11-13 11:41:46', 4, '2025-11-15 08:47:34', 0);
 INSERT INTO `home_content` VALUES (14, '健康饮食 | 一周减脂餐详细教程', 9, 'https://images.unsplash.com/photo-1490645935967-10de6ba17071?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1490645935967-10de6ba17071?w=600&h=300&fit=crop\"]', 117000, 52000, 267000, 31000, 1, '小红书', 6, '分享我制作减脂餐的经验，营养搭配合理，效果显著。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, NULL, 0);
 INSERT INTO `home_content` VALUES (15, '小户型装修 | 30平米住出大空间感', 10, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=300&fit=crop\"]', 145000, 41000, 198000, 26000, 1, '知乎', 4, '分享我的小户型装修经验，如何让有限的空间发挥最大的效用。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, NULL, 0);
 INSERT INTO `home_content` VALUES (16, '新手养猫指南 | 从领养到照顾全攻略', 11, 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=300&fit=crop', '[\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=300&fit=crop\"]', 198000, 58000, 289001, 37000, 1, 'B站', 1, '分享我从领养猫咪到日常照顾的完整经验，帮助新手铲屎官。', 1, 1, '', 1, '2025-11-13 11:41:46', NULL, '2025-11-13 17:24:34', 0);
@@ -238,7 +238,7 @@ CREATE TABLE `home_content_tag`  (
   UNIQUE INDEX `uk_content_tag`(`content_id` ASC, `tag_id` ASC) USING BTREE,
   INDEX `idx_content_id`(`content_id` ASC) USING BTREE,
   INDEX `idx_tag_id`(`tag_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '稿件标签关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '稿件标签关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_content_tag
@@ -287,7 +287,7 @@ CREATE TABLE `home_influencer`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`influencer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '优质达人表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '优质达人表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_influencer
@@ -316,7 +316,7 @@ CREATE TABLE `home_platform`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`platform_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容平台表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '内容平台表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_platform
@@ -344,7 +344,7 @@ CREATE TABLE `home_tag`  (
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`tag_id`) USING BTREE,
   UNIQUE INDEX `uk_tag_name`(`tag_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '标签表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '标签表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_tag
@@ -377,7 +377,7 @@ CREATE TABLE `home_user_interaction`  (
   UNIQUE INDEX `uk_content_user_type`(`content_id` ASC, `user_id` ASC, `interaction_type` ASC) USING BTREE,
   INDEX `idx_content_id`(`content_id` ASC) USING BTREE,
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户互动表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户互动表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of home_user_interaction
@@ -409,7 +409,7 @@ CREATE TABLE `influencer_application`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
   INDEX `idx_status`(`status` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of influencer_application
@@ -434,7 +434,7 @@ CREATE TABLE `sys_config`  (
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`config_id`) USING BTREE,
   UNIQUE INDEX `config_key_uniq_idx`(`config_key` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_config
@@ -466,7 +466,7 @@ CREATE TABLE `sys_dept`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -498,7 +498,7 @@ CREATE TABLE `sys_login_info`  (
   `login_time` datetime NULL DEFAULT NULL COMMENT '访问时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 438 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 445 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_login_info
@@ -526,6 +526,13 @@ INSERT INTO `sys_login_info` VALUES (434, 'admin', '0:0:0:0:0:0:0:1', '内网IP'
 INSERT INTO `sys_login_info` VALUES (435, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-13 10:42:07', 0);
 INSERT INTO `sys_login_info` VALUES (436, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-13 11:01:19', 0);
 INSERT INTO `sys_login_info` VALUES (437, 'admin1', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-13 17:31:14', 0);
+INSERT INTO `sys_login_info` VALUES (438, 'admin1', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 08:47:08', 0);
+INSERT INTO `sys_login_info` VALUES (439, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 08:49:27', 0);
+INSERT INTO `sys_login_info` VALUES (440, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 08:52:02', 0);
+INSERT INTO `sys_login_info` VALUES (441, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 08:58:24', 0);
+INSERT INTO `sys_login_info` VALUES (442, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 09:06:35', 0);
+INSERT INTO `sys_login_info` VALUES (443, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 09:10:43', 0);
+INSERT INTO `sys_login_info` VALUES (444, 'admin', '0:0:0:0:0:0:0:1', '内网IP', 'Chrome 14', 'Windows 10', 1, '登录成功', '2025-11-15 09:14:11', 0);
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -549,7 +556,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 234 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -619,6 +626,23 @@ INSERT INTO `sys_menu` VALUES (62, '单条强退', 0, ' ', 13, '', 1, 'monitor:o
 INSERT INTO `sys_menu` VALUES (63, 'AgileBoot Github地址', 4, 'https://github.com/valarchie/AgileBoot-Back-End', 0, '/external', 0, '', '{\"title\":\"AgileBoot Github地址\",\"icon\":\"fa-solid:external-link-alt\",\"showParent\":true,\"rank\":9}', 0, 'Agileboot github地址', 0, '2022-05-21 08:30:54', 1, '2025-11-13 08:36:05', 0);
 INSERT INTO `sys_menu` VALUES (64, '首页', 2, '', 0, '/global', 0, '121212', '{\"title\":\"首页\",\"showParent\":true,\"rank\":3}', 1, '', 1, '2023-07-24 22:36:03', 1, '2023-07-24 22:38:37', 1);
 INSERT INTO `sys_menu` VALUES (65, '个人中心', 1, 'PersonalCenter', 2053, '/system/user/profile', 0, '434sdf', '{\"title\":\"个人中心\",\"showParent\":true,\"rank\":3}', 1, '', 1, '2023-07-24 22:36:55', NULL, NULL, 1);
+INSERT INTO `sys_menu` VALUES (100, '内容管理', 2, '', 0, '/content', 0, '', '{\"title\":\"内容管理\",\"icon\":\"ep:document\",\"showParent\":true,\"rank\":0}', 1, '内容管理目录', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (101, '轮播图管理', 1, 'ContentBanner', 100, '/content/banner/index', 0, 'home:banner:list', '{\"title\":\"轮播图管理\",\"icon\":\"ep:picture\",\"showParent\":true}', 1, '轮播图管理菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (103, '平台管理', 1, 'ContentPlatform', 100, '/content/platform/index', 0, 'home:platform:list', '{\"title\":\"平台管理\",\"icon\":\"ep:platform\",\"showParent\":true}', 1, '平台管理菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (104, '标签管理', 1, 'ContentTag', 100, '/content/tag/index', 0, 'home:tag:list', '{\"title\":\"标签管理\",\"icon\":\"ep:price-tag\",\"showParent\":true}', 1, '标签管理菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (105, '内容列表', 1, 'ContentArticle', 100, '/content/article/index', 0, 'home:content:list', '{\"title\":\"内容列表\",\"icon\":\"ep:document-copy\",\"showParent\":true}', 1, '内容列表菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (106, '达人管理', 1, 'ContentInfluencer', 100, '/content/influencer/index', 0, 'home:influencer:list', '{\"title\":\"达人管理\",\"icon\":\"ep:user-filled\",\"showParent\":true}', 1, '达人管理菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (107, '达人申请审核', 1, 'InfluencerApplication', 100, '/content/application/index', 0, 'home:influencer:application', '{\"title\":\"达人申请审核\",\"icon\":\"ep:document-checked\",\"showParent\":true}', 1, '达人申请审核菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (108, '内容投稿审核', 1, 'ContentSubmission', 100, '/content/submission/index', 0, 'home:content:submission', '{\"title\":\"内容投稿审核\",\"icon\":\"ep:document-add\",\"showParent\":true}', 1, '内容投稿审核菜单', 0, '2025-11-15 08:57:44', 1, '2025-11-15 08:57:44', 0);
+INSERT INTO `sys_menu` VALUES (201, '轮播图查询', 0, ' ', 101, '', 1, 'home:banner:query', '{\"title\":\"轮播图查询\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (202, '轮播图新增', 0, ' ', 101, '', 1, 'home:banner:add', '{\"title\":\"轮播图新增\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (203, '轮播图修改', 0, ' ', 101, '', 1, 'home:banner:edit', '{\"title\":\"轮播图修改\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (204, '轮播图删除', 0, ' ', 101, '', 1, 'home:banner:remove', '{\"title\":\"轮播图删除\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (221, '申请查询', 0, ' ', 107, '', 1, 'home:influencer:application:query', '{\"title\":\"申请查询\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (222, '申请审核', 0, ' ', 107, '', 1, 'home:influencer:application:audit', '{\"title\":\"申请审核\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (231, '投稿查询', 0, ' ', 108, '', 1, 'home:content:submission:query', '{\"title\":\"投稿查询\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (232, '投稿审核', 0, ' ', 108, '', 1, 'home:content:submission:audit', '{\"title\":\"投稿审核\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
+INSERT INTO `sys_menu` VALUES (233, '投稿发布', 0, ' ', 108, '', 1, 'home:content:submission:publish', '{\"title\":\"投稿发布\"}', 1, '', 0, '2025-11-15 08:57:44', NULL, NULL, 0);
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -637,7 +661,7 @@ CREATE TABLE `sys_notice`  (
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '备注',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '通知公告表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_notice
@@ -670,7 +694,7 @@ CREATE TABLE `sys_operation_log`  (
   `operation_time` datetime NOT NULL COMMENT '操作时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`operation_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 574 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 574 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_operation_log
@@ -706,7 +730,7 @@ CREATE TABLE `sys_post`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '逻辑删除',
   PRIMARY KEY (`post_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_post
@@ -735,7 +759,7 @@ CREATE TABLE `sys_role`  (
   `remark` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标志（0代表存在 1代表删除）',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
@@ -752,7 +776,7 @@ CREATE TABLE `sys_role_menu`  (
   `role_id` bigint(20) NOT NULL COMMENT '角色ID',
   `menu_id` bigint(20) NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -849,15 +873,15 @@ CREATE TABLE `sys_user`  (
   `remark` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除标志（0代表存在 1代表删除）',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 1, 1, 4, 'admin', 'valarchie1', 0, 'agileboot@163.com', '15888888883', 0, '/profile/avatar/20230725164110_blob_6b7a989b1cdd4dd396665d2cfd2addc5.png', '$2a$10$o55UFZAtyWnDpRV6dvQe8.c/MjlFacC49ASj2usNXm9BY74SYI/uG', 1, '0:0:0:0:0:0:0:1', '2025-11-13 11:01:21', 1, NULL, '2022-05-21 08:30:54', 1, '2025-11-13 11:01:21', '管理员', 0);
+INSERT INTO `sys_user` VALUES (1, 1, 1, 4, 'admin', 'valarchie1', 0, 'agileboot@163.com', '15888888883', 0, '/profile/avatar/20230725164110_blob_6b7a989b1cdd4dd396665d2cfd2addc5.png', '$2a$10$o55UFZAtyWnDpRV6dvQe8.c/MjlFacC49ASj2usNXm9BY74SYI/uG', 1, '0:0:0:0:0:0:0:1', '2025-11-15 09:14:11', 1, NULL, '2022-05-21 08:30:54', 1, '2025-11-15 09:14:11', '管理员', 0);
 INSERT INTO `sys_user` VALUES (2, 2, 2, 5, 'ag1', 'valarchie2', 0, 'agileboot1@qq.com', '15666666666', 1, '/profile/avatar/20230725114818_avatar_b5bf400732bb43369b4df58802049b22.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', 1, '127.0.0.1', '2022-05-21 08:30:54', 0, NULL, '2022-05-21 08:30:54', NULL, NULL, '测试员1', 0);
 INSERT INTO `sys_user` VALUES (3, 2, 0, 5, 'ag2', 'valarchie3', 0, 'agileboot2@qq.com', '15666666667', 1, '/profile/avatar/20230725114818_avatar_b5bf400732bb43369b4df58802049b22.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', 1, '127.0.0.1', '2022-05-21 08:30:54', 0, NULL, '2022-05-21 08:30:54', NULL, NULL, '测试员2', 0);
-INSERT INTO `sys_user` VALUES (4, NULL, 2, NULL, 'admin1', 'admin1', 0, '', '', 0, '', '$2a$10$e.Jwu1QRBDXMV.21gI9Yk.SK2Z4e6pcNwwZK9JNIcZpFFeIh7EgMW', 1, '0:0:0:0:0:0:0:1', '2025-11-13 17:31:25', 0, NULL, '2025-11-12 09:33:20', 4, '2025-11-13 17:31:25', NULL, 0);
+INSERT INTO `sys_user` VALUES (4, NULL, 2, NULL, 'admin1', 'admin1', 0, '', '', 0, '', '$2a$10$e.Jwu1QRBDXMV.21gI9Yk.SK2Z4e6pcNwwZK9JNIcZpFFeIh7EgMW', 1, '0:0:0:0:0:0:0:1', '2025-11-15 08:47:11', 0, NULL, '2025-11-12 09:33:20', 4, '2025-11-15 08:47:11', NULL, 0);
 
 -- ----------------------------
 -- Table structure for user_follow
@@ -875,7 +899,7 @@ CREATE TABLE `user_follow`  (
   UNIQUE INDEX `uk_follower_followee`(`follower_id` ASC, `followee_id` ASC) USING BTREE,
   INDEX `idx_follower_id`(`follower_id` ASC) USING BTREE,
   INDEX `idx_followee_id`(`followee_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户关注表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户关注表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_follow
